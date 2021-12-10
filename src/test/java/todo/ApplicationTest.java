@@ -3,6 +3,8 @@ package todo;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -39,23 +41,14 @@ public class ApplicationTest {
         assertEquals(Application.NO_TODOS_AVAILABLE, outContent.toString());
     }
 
-    @Test
-    public void addTodo() {
-        String todo = "Einkaufen gehen";
-        String[] addTodoArguments = {Application.COMMAND_ADD_TODO, todo};
+    @ParameterizedTest
+    @ValueSource(strings = {"Einkaufen gehen", "Staubsaugen"})
+    public void addTodo(String todoDescription) {
+        String[] addTodoArguments = {Application.COMMAND_ADD_TODO, todoDescription};
 
         Application.main(addTodoArguments);
 
-        assertEquals(Application.getTodoGespeichertMeldung(todo), outContent.toString());
+        assertEquals(Application.getTodoGespeichertMeldung(todoDescription), outContent.toString());
     }
 
-    @Test
-    public void testIfSecondParameterReturnsCorrectly() {
-        final String var = "Staubsaugen";
-        String[] addTodoArguments = {Application.COMMAND_ADD_TODO, var};
-
-        Application.main(addTodoArguments);
-
-        assertEquals(Application.getTodoGespeichertMeldung(var), outContent.toString());
-    }
 }
