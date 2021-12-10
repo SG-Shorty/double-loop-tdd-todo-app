@@ -41,22 +41,21 @@ public class ApplicationTest {
 
     @Test
     public void addTodo() {
-        String[] addTodoArguments = {Application.COMMAND_ADD_TODO,"Einkaufen gehen"};
+        String todo = "Einkaufen gehen";
+        String[] addTodoArguments = {Application.COMMAND_ADD_TODO, todo};
 
         Application.main(addTodoArguments);
 
-        String result = "Todo -Einkaufen gehen- wurde gespeichert";
-        assertEquals(result, outContent.toString());
+        assertEquals(Application.getTodoGespeichertMeldung(todo), outContent.toString());
     }
 
     @Test
     public void testIfSecondParameterReturnsCorrectly() {
-        String var = "Staubsaugen";
+        final String var = "Staubsaugen";
         String[] addTodoArguments = {Application.COMMAND_ADD_TODO, var};
 
         Application.main(addTodoArguments);
 
-        String result = "Todo -" + var  + "- wurde gespeichert";
-        assertEquals(result, outContent.toString());
+        assertEquals(Application.getTodoGespeichertMeldung(var), outContent.toString());
     }
 }
