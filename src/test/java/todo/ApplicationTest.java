@@ -32,10 +32,20 @@ public class ApplicationTest {
 
     @Test
     public void showEmptyTodos() {
-        String[] showTodoComment = {"showTodos"};
+        String[] showTodoComment = {Application.COMMAND_SHOW_TODOS};
 
         Application.main(showTodoComment);
 
         assertEquals(Application.NO_TODOS_AVAILABLE, outContent.toString());
+    }
+
+    @Test
+    public void addTodo() {
+        String[] addTodoArguments = {Application.COMMAND_ADD_TODO,"Einkaufen gehen"};
+
+        Application.main(addTodoArguments);
+
+        String result = "Todo -Einkaufen gehen- wurde gespeichert";
+        assertEquals(result, outContent.toString());
     }
 }
