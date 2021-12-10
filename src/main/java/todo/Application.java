@@ -12,7 +12,7 @@ public class Application {
         if (command.equals(COMMAND_SHOW_TODOS)) {
             System.out.print(NO_TODOS_AVAILABLE);
         } else if (command.equals(COMMAND_ADD_TODO)) {
-            System.out.print("Todo -Einkaufen gehen- wurde gespeichert");
+            System.out.print("Todo -" + args[1] + "- wurde gespeichert");
         }
     }
 }

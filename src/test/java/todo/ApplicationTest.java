@@ -13,10 +13,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ApplicationTest {
 
-    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-    private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
-    private final PrintStream originalOut = System.out;
-    private final PrintStream originalErr = System.err;
+    private ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+    private ByteArrayOutputStream errContent = new ByteArrayOutputStream();
+    private PrintStream originalOut = System.out;
+    private PrintStream originalErr = System.err;
 
     @BeforeEach
     public void setUpStreams() {
@@ -32,9 +32,9 @@ public class ApplicationTest {
 
     @Test
     public void showEmptyTodos() {
-        String[] showTodoComment = {Application.COMMAND_SHOW_TODOS};
+        String[] showTodoCommand = {Application.COMMAND_SHOW_TODOS};
 
-        Application.main(showTodoComment);
+        Application.main(showTodoCommand);
 
         assertEquals(Application.NO_TODOS_AVAILABLE, outContent.toString());
     }
@@ -46,6 +46,17 @@ public class ApplicationTest {
         Application.main(addTodoArguments);
 
         String result = "Todo -Einkaufen gehen- wurde gespeichert";
+        assertEquals(result, outContent.toString());
+    }
+
+    @Test
+    public void testIfSecondParameterReturnsCorrectly() {
+        String var = "Staubsaugen";
+        String[] addTodoArguments = {Application.COMMAND_ADD_TODO, var};
+
+        Application.main(addTodoArguments);
+
+        String result = "Todo -" + var  + "- wurde gespeichert";
         assertEquals(result, outContent.toString());
     }
 }

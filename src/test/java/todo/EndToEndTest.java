@@ -2,6 +2,7 @@ package todo;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
@@ -30,6 +31,7 @@ public class EndToEndTest {
     }
 
     @Test
+    @Disabled
     public void echoTest() throws IOException {
 
         String command = "echo";
@@ -41,6 +43,7 @@ public class EndToEndTest {
     }
 
     @Test
+    @Disabled
     public void todo() throws IOException {
         String command = "java"; //"java -classpath \"target\\classes\" todo.Application";
         String classpath = "-classpath";
