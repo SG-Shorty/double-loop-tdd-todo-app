@@ -30,15 +30,11 @@ public class EndToEndTest {
     }
 
     @Test
-    public void todo() {
+    public void todo() throws IOException {
         String command = "Application";
         String arg = "showTodos";
 
-        try {
-            Process myProcess = new ProcessBuilder(command, arg).start();
-            assertEquals("hello", outContent.toString());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Process myProcess = new ProcessBuilder(command, arg).start();
+        assertEquals("hello", outContent.toString());
     }
 }
