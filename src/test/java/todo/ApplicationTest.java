@@ -30,8 +30,11 @@ public class ApplicationTest {
 
     @Test
     public void showEmptyTodos(){
-        Application.main(new String[]{"showTodos"});
-        assertEquals("No Todos available", outContent.toString());
+        String[] showTodoComment = {"showTodos"};
+
+        Application.main(showTodoComment);
+
+        assertEquals(Application.NO_TODOS_AVAILABLE, outContent.toString());
     }
 
 }
