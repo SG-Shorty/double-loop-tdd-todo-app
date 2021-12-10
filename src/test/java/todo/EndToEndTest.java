@@ -30,11 +30,26 @@ public class EndToEndTest {
     }
 
     @Test
-    public void todo() throws IOException {
-        String command = "Application";
-        String arg = "showTodos";
+    public void echoTest() throws IOException {
+
+        String command = "echo";
+        String arg = "test";
 
         Process myProcess = new ProcessBuilder(command, arg).start();
-        assertEquals("hello", outContent.toString());
+
+        assertEquals(arg, outContent.toString());
+    }
+
+    @Test
+    public void todo() throws IOException {
+        String command = "java"; //"java -classpath \"target\\classes\" todo.Application";
+        String classpath = "-classpath";
+        String arg = "java -classpath target\\classes todo.Application";
+
+        //Process myProcess = new ProcessBuilder(command, classpath, "target\\classes todo.Application").start();
+
+        Process process = Runtime.getRuntime().exec(arg);
+
+        assertEquals(10, Application.count);
     }
 }

@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -29,12 +31,11 @@ public class ApplicationTest {
     }
 
     @Test
-    public void showEmptyTodos(){
+    public void showEmptyTodos() {
         String[] showTodoComment = {"showTodos"};
 
         Application.main(showTodoComment);
 
         assertEquals(Application.NO_TODOS_AVAILABLE, outContent.toString());
     }
-
 }
